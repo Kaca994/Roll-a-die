@@ -38,8 +38,10 @@
             }
             
             #die > img {
+                opacity: 0;
                 width: 0;
                 height: 0;
+                position: absolute;
             }
             
             #roll{
@@ -75,12 +77,12 @@
     
         <div id="container">
             <div id="die">
-                <img id="1" src="dies1.png">
-                <img id="2" src="dies2.png">
-                <img id="3" src="dies3.png">
-                <img id="4" src="dies4.png">
-                <img id="5" src="dies5.png">
-                <img id="6" src="dies6.png">
+                <img class ="img" id="1" src="dies1.png">
+                <img class ="img" id="2" src="dies2.png">
+                <img class ="img" id="3" src="dies3.png">
+                <img class ="img" id="4" src="dies4.png">
+                <img class ="img" id="5" src="dies5.png">
+                <img class ="img" id="6" src="dies6.png">
             </div>
             
             <button id="roll">
@@ -98,16 +100,25 @@
         
         $("#roll").on('click', function(){
                   
-           $('img').each(function(index){
-                $( this ).css({"width": 0, "height":0 }); 
-           }); 
+//           $('img').each(function(index){
+//                $( this ).css({"width": 0, "height":0 }); 
+//           }); 
+            
+            $('.img').css({
+                opacity : 0,
+                width : 0,
+                height : 0
+            });
 
+            console.log( $('img').attr('id'));
+            
             var br = '';
             br = Math.floor(Math.random() * 6) + 1;
-            $("#"+br).animate({
-                height: '150px',
-                width: '150px'
-            }, 500);    
+            $("#"+br).delay(400).animate({
+                opacity : 1,
+                width : "150px",
+                height : "150px"
+            }, 300);    
             
         });
 
